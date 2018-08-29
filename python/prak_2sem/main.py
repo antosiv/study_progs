@@ -144,8 +144,8 @@ class Checkers:
                 res_map[step[i - 1]] = 0
         return res_map
 
-    def get_step_tree(self, root_dict, fig_type, recursion_depth, fig_map):
-        if recursion_depth == 0:
+    def get_step_tree(self, root_dict, fig_type, recursion_depth, fig_map, alpha, beta):
+        if recursion_depth == 0 or alpha > beta:
             return
         steps = self.get_possible_steps(fig_type, fig_map)
         for step in [*steps[0], *steps[1]]:
@@ -153,26 +153,33 @@ class Checkers:
             root_dict[t_step] = dict()
             root_dict[t_step]['map'] = self.make_step(fig_map, step)
             root_dict[t_step]['score'] = root_dict[t_step]['map'].sum()
+            alpha = max(alpha, root_dict[t_step]['score'])
+            beta = min(beta, root_dict[t_step]['score'])
             root_dict[t_step]['sons'] = dict()
-            self.get_step_tree(root_dict[t_step]['sons'], -1 * fig_type, recursion_depth - 1, root_dict[t_step]['map'])
+            self.get_step_tree(root_dict[t_step]['sons'], -1 * fig_type, recursion_depth - 1, root_dict[t_step]['map'], alpha, beta)
+
+    def get_score(self, regimen, root):
+        sons_scores = [self.get_score(-1 * regimen, son) for son in root['sons'].values()]
+        if len(sons_scores) == 0:
+            return root['score']
+        else:
+            if regimen == 1:
+                score = min(sons_scores)
+            else:
+                score = max(sons_scores)
+            return score
 
     def get_optimal_step(self, fig_type):
         tree = dict()
-        self.get_step_tree(tree, fig_type, self.recursion_depth, self.figures_map)
-        scores = dict()
-        best_score = None
-        for step, elem in tree.items():
-            step_list = [val['score'] for val in elem['sons'].values()]
-            if len(step_list) > 0:
-                if fig_type == 1:
-                    scores[step] = min(step_list)
-                else:
-                    scores[step] = max(step_list)
-            else:
-                continue
-            if best_score is None or scores[step] > best_score and fig_type == 1 or scores[step] < best_score and fig_type == -1:
-                best_score = scores[step]
-
+        self.get_step_tree(tree, fig_type, self.recursion_depth, self.figures_map, -float('Inf'), float('Inf'))
+        scores = {step: self.get_score(fig_type, elem) for step, elem in tree.items()}
+        scores_list = list(scores.values())
+        if len(scores_list) == 0:
+            return
+        if fig_type == 1:
+            best_score = max(scores_list)
+        else:
+            best_score = min(scores_list)
         steps = list(filter(lambda x: True if scores[x] == best_score else False, scores.keys()))
         if len(steps) == 0:
             return
