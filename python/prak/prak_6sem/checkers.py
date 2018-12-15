@@ -1,9 +1,9 @@
 import pygame
 from pygame.locals import *
 import numpy as np
-import subprocess
 import random
 from time import sleep
+
 
 class GameError(Exception):
     def __init__(self, msg):
