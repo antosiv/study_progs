@@ -51,7 +51,7 @@ class AStar:
             key=lambda x: self.heuristic_map[x[0], x[1]] + self._dist_metric(x)
         )
 
-    def _render(self):
+    def _render_step(self):
         for i in range(self.field.shape[0]):
             for j in range(self.field.shape[1]):
                 if (i, j) == self.start:
@@ -104,7 +104,7 @@ class AStar:
     def run(self):
         pygame.init()
         pygame.display.set_caption('A*')
-        self._render()
+        self._render_step()
         pygame.display.flip()
 
         running = True
@@ -123,9 +123,9 @@ class AStar:
                 sleep(0.1)
                 continue
             self._step()
-            self._render()
+            self._render_step()
             pygame.display.flip()
-            sleep(0.3)
+            sleep(0.1)
         pygame.quit()
 
 
