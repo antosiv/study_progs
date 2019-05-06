@@ -1,10 +1,10 @@
-from torch.utils.data import Dataset, DataLoader
-from torch import nn, optim
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import control
-
+from torch.utils.data import Dataset, DataLoader
+from torch import nn, optim
+from tqdm import tqdm_notebook as tqdm
 
 # discrete output visualisation
 def _color_gen():
@@ -164,22 +164,27 @@ def generate_data_for_input_output_rnn_training(
 # simple full connected net
 class FCnet(nn.Module):
 
-    def __init__(self, input_size, output_size, n_layers, layer_size):
+    def __init__(self, input_size, output_size, n_layers, hidden_size, activation='tanh'):
         super().__init__()
-        self.layers = nn.ModuleList([nn.Linear(input_size, layer_size)])
-        self.layers.extend(nn.Linear(layer_size, layer_size) for _ in range(n_layers - 2))
-        self.layers.append(nn.Linear(layer_size, output_size))
-        self.layer_size = layer_size
+        assert activation in {'tanh', 'sigmoid', 'relu'}
+        self.layers = nn.ModuleList([nn.Linear(input_size, hidden_size)])
+        self.layers.extend(nn.Linear(hidden_size, hidden_size) for _ in range(n_layers - 2))
+        self.layers.append(nn.Linear(hidden_size, output_size))
         for layer in self.layers:
             nn.init.xavier_uniform_(layer.weight, gain=1)
         self.input_size = input_size
-        self.layer_size = layer_size
-        self.tanh = nn.Hardtanh(min_val=-1, max_val=1)
+        self.hidden_size = hidden_size
+        if activation == 'tanh':
+            self.activation = nn.Hardtanh(min_val=-1, max_val=1)
+        elif activation == 'sigmoid':
+            self.activation = nn.Sigmoid()
+        else:
+            self.activation = nn.ReLU()
 
     def forward(self, x):
-        y = self.tanh(self.layers[0](x))
+        y = self.activation(self.layers[0](x))
         for i in range(1, len(self.layers)):
-            y = self.tanh(self.layers[i](y))
+            y = self.activation(self.layers[i](y))
         return y
 
 
@@ -205,30 +210,6 @@ class ControlLSTMInputs(nn.Module):
         hidden, _ = self.layers[0](system_input_signal.view(-1, self.reccurency, self.layer_input_size).transpose(0, 1))
         last_hidden = hidden[-1, :, :]
         return self.layers[1](last_hidden)
-
-
-# ancillary utils for training
-def train(model, epochs, train_loader, loss):
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
-    for epoch in range(epochs):
-        losses = []
-        for data_tuple in train_loader:
-            prediction = model(*data_tuple[:-1])
-            loss_batch = loss(prediction, data_tuple[-1])
-            losses.append(loss_batch.item())
-            optimizer.zero_grad()
-            loss_batch.backward()
-            optimizer.step()
-        print('epoch {e}, mse {m}'.format(e=epoch, m=np.mean(losses)))
-
-
-def test(model, test_loader, loss):
-    losses = []
-    for x, y in test_loader:
-        prediction = model(x)
-        loss_batch = loss(prediction, y)
-        losses.append(loss_batch.item())
-    return np.mean(losses)
 
 
 class ControlLSTMInputsOutputs(nn.Module):
@@ -309,3 +290,61 @@ class ControlLSTMInputsOutputs(nn.Module):
             )
             losses.append(loss_batch.item())
         return np.mean(losses)
+
+
+# ancillary utils for training
+def train(model, epochs, train_loader, loss, print_loss=True):
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    for epoch in range(epochs):
+        losses = []
+        for data_tuple in train_loader:
+            prediction = model(*data_tuple[:-1])
+            loss_batch = loss(prediction, data_tuple[-1])
+            losses.append(loss_batch.item())
+            optimizer.zero_grad()
+            loss_batch.backward()
+            optimizer.step()
+        if print_loss:
+            print('epoch {e}, mse {m}'.format(e=epoch, m=np.mean(losses)))
+
+
+def test(model, test_loader, loss):
+    losses = []
+    for x, y in test_loader:
+        prediction = model(x)
+        loss_batch = loss(prediction, y)
+        losses.append(loss_batch.item())
+    return np.mean(losses)
+
+
+def hyper_search(
+    model_class,
+    train_dataloader,
+    test_dataset,
+    default_init_args,
+    arg_variants,
+    train_epochs,
+    test_func='global',
+    plot_file_name=None
+):
+    assert len(arg_variants) == 1
+    assert test_func in {'global', 'buildin'}
+    search_arg_name = list(arg_variants.keys())[0]
+    losses = list()
+    for val in tqdm(arg_variants[search_arg_name]):
+        default_init_args[search_arg_name] = val
+        model = model_class(**default_init_args)
+        train(model,  train_epochs, train_dataloader, nn.MSELoss(), print_loss=False)
+        if test_func == 'global':
+            losses.append(test(model, DataLoader(test_dataset, batch_size=10), nn.MSELoss()))
+        else:
+            losses.append(model.test(test_dataset, nn.MSELoss()))
+    fig, ax = plt.subplots()
+    ax.set_xlabel(search_arg_name, fontsize=15)
+    ax.set_ylabel('loss', fontsize=15)
+    ax.plot(arg_variants[search_arg_name], losses)
+    fig.set_size_inches((10, 10))
+    if plot_file_name is None:
+        plt.show()
+    else:
+        plt.savefig(plot_file_name)

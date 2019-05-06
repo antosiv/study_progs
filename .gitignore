@@ -1,4 +1,11 @@
-.idea
-.ipynb_checkpoints
+*.idea
+*.ipynb_checkpoints
 reports
 __pycache__
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.dvi
