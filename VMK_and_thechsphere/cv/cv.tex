@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper,sans]{moderncv}
+\moderncvstyle{classic}
+\moderncvcolor{black}
+\usepackage[scale=0.9]{geometry}
+\setlength{\hintscolumnwidth}{100pt}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[russianb]{babel}
+\usepackage{fontawesome}
+\firstname{Антон}
+\familyname{Сивков}
+\mobile{+7 (926) 049-10-75}
+\newcommand{\myurl}[1]{\color{blue}\url{#1}\color{black}}
+\email{anton6722@gmail.com}
+\social[github]{antosiv}
+\photo[80pt][0.4pt]{ava}
+
+\begin{document}
+\makecvtitle
+
+\section{Опыт Работы}
+\cventry{Июнь 2018 -- now}{BostonGene (\myurl{https://bostongene.com})}{Аналитик данных research \& development отдела}{}{}{
+	\begin{itemize}
+		\item В основном занимаюсь разработкой софта для научного отдела на python, участвую в разработке пайплайна обработки Next Generation Sequencing данных и побочных web-сервисов, активно работаю с ETL/web фреймворками и СУБД
+		\item Также занимаюсь Natural language processing, в основном простыми задачами, связаными с обработкой медицинских текстов
+	\end{itemize}
+}
+
+\section{Образование}
+\cventry{2015 -- 2019}{Высшее}{Факультет Вычислительной Математики и Кибернетики МГУ имени М. В. Ломоносова}{бакалавр}{\textit{cредний балл -- 4.45 / 5}}{}{}{}
+\cventry{2019 -- now}{Неоконченное высшее}{НИУ ВШЭ, Магистерская программа «Анализ данных в биологии и медицине»}{}{}{}{}{}
+\cventry{2018}{Техносфера@mail.ru, 2 семестра, неокончена}{}{}{}{}
+
+
+\section{Навыки}
+
+\cvitem{Языки \newline программирования}{
+    \begin{itemize}
+        \item Продвинутый уровень: Python3.5-3.8
+        \item Базовый уровень: C++, SQL, Python2.7
+    \end{itemize}
+}
+\cvitem{Инструменты web-разработки}{nginx, flask}
+\cvitem{ETL - фреймворки}{Apache Airflow + Celery, Prefect \myurl{https://github.com/PrefectHQ/prefect}{}}
+\cventry{Инструменты ML}{Pandas, NumPy, SciPy, scikit-learn, matplotlib, pytorch, keras}{}{}{}{}
+\cvitem{Другие инструменты}{
+    \begin{itemize}
+        \item Продвинутый уровень: git, docker, pip, sqlalchemy
+        \item Базовый уровень: PostgreSQL, MongoDB, vim, virtualenv, linux
+    \end{itemize}
+}
+\cvitem{Другое}{Алгоритмы и структуры данных, ООП, Atlassian JIRA}
+
+\cvitem{Языки}{Русский, Английский (intermediate)}
+
+\pagebreak
+
+\section{Проекты}
+\cventry{2018}{Реализация 5 моделей машинного обучения}{}{\myurl{https://github.com/antosiv/study_progs/tree/master/python/ML_pack}}{}{
+	\begin{itemize}
+		\item KNeighborsClassifier
+		\item DecisionTreeClassifier
+		\item SGDClassifier, svm learning with sgd
+		\item Kmeans, clastering
+		\item EMGaussianMixture expectation maximization Gaussian mixture inference
+	\end{itemize}
+	Модели реализовывались как домашнее задание курса Техносферы по машинному обучению, собрал все в один пакет
+}
+
+\cventry{2018}{Анализ тональности отзывов отелей}{}{\myurl{https://github.com/antosiv/dm1project}}{}{
+    \begin{itemize}
+        \item Проект выполнялся как выпускное задание курса Техносферы по машинному обучению
+        \item Данные собирались вручную, был произведен парсинг отзывов на самый большой отель в мире с сайта \myurl{https://booking.com}
+        \item Проект выполнялся вв команде, я занимался парсингом и TF-IDF, было построено несколько классификаторов на данных TF-IDF и word2vec, лучший показал accuracy 0.9
+    \end{itemize}
+}
+
+\cventry{2019}{Диплом, моделирование простого объекта управления с помощью различных нейронных сетей}{}{\myurl{https://github.com/antosiv/study_progs/tree/master/jupyter/diploma}}{}{
+	\begin{itemize}
+		\item Эксперименты реализованы на языке python с помощью инструментов pytorch и control
+		\item Проведены эксперименты с многослойным перцептроном, LSTM, обучающейся по входным данным объекта, LSTM, обучающейся по входным и выходным данным
+		\item В результате LSTM сети качественно промоделировали объект, показали способность к экстраполяции его поведения
+	\end{itemize}
+}
+
+\section{О себе}
+\cvitem{Цели}{Я хочу стать профессиональным разработчиком, работать над интересными пректами и писать хороший код; мне нравится изучать новые технологии и практики программирования, я часто стараюсь разобраться в сути задач, которые решаю.}
+\cvitem{Дополнительные курсы}{
+    \begin{itemize}
+        \item Курс ''Погружение в Python'', \myurl{https://www.coursera.org/account/accomplishments/certificate/YSM43L2WE49G}
+        \item Курс ''Algoritmic Toolbox'', \myurl{https://www.coursera.org/account/accomplishments/certificate/AALYRUSNGRTR}
+        \item Курс ''Теория Вероятностей'', \myurl{https://stepik.org/cert/215037}
+    \end{itemize}
+}
+\cvitem{Дополнительно}{Хочу добавить, что способен быстро разбираться в новых проектах и фреймворках, люблю исследовать и править сложные баги.}
+
+\end{document} 
