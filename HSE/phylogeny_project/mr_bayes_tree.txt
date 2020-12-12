@@ -1,0 +1,62 @@
+
+    /- Panaspis cabindae (1)
+   |                                                                               
+   | Panaspis cabindae (18)
+   |                                                                               
+   |            /- Panaspis sp. Tanzania 1 (2)
+   |          /-+                                                                  
+   |          | \-- Panaspis sp. Tanzania 2 (26)
+   |         /+                                                                    
+   |         |\--- Panaspis sp. Mozambique 5 (30)
+   |         |                                                                     
+   |         |/--- Panaspis sp. Katanga 1 (3)
+   |         |+                                                                    
+   |         |\-- Panaspis sp. Katanga 2 (5)
+   |         |                                                                     
+   |        /+  /- Panaspis wahlbergi (6)
+   |        ||  |                                                                  
+   |        ||  |- Panaspis wahlbergi (10)
+   |        ||/-+                                                                  
+   |        ||| |/- Panaspis wahlbergi (25)
+   |        ||| \+                                                                 
+   |        |\+  \ Panaspis wahlbergi (27)
+   |       /+ |                                                                    
+   +       || \--- Panaspis wahlbergi (7)
+   |       ||                                                                      
+   |       || /-- Panaspis sp. Mozambique 4 (4)
+   |       || |                                                                    
+   |      /+| |-- Panaspis sp. Mozambique Panaspis cabindae (28)
+   |      ||\-+                                                                    
+   |      ||  \ Panaspis sp. Malawi (31)
+   |      ||                                                                       
+   |      |\--- Panaspis sp. Mozambique 2 (29)
+   |      |                                                                        
+   |      |    /--- Panaspis sp. Namibia (8)
+   |    /-+  /-+                                                                   
+   |    | |  | \-- Panaspis sp. Limpopo (9)
+   |    | |  |                                                                     
+   |    | |/-+   /- Panaspis maculicollis (11)
+   |    | || |  /+                                                                 
+   |    | || |  |\- Panaspis maculicollis (12)
+   |    | || \--+                                                                  
+   |    | \+    | / Panaspis sp. Mozambique 1 (23)
+   |    |  |    \-+                                                                
+   |    |  |      \ Panaspis sp. Mozambique 1 (24)
+   |    |  |                                                                       
+   \----+  \------- Panaspis sp. Ethiopia (22)
+        |                                                                          
+        |                       /----------------------- Broadleysaurus major (13)
+        |                       |                                                  
+        |                    /--+   /----- Plestiodon inexpectatus (14)
+        |                    |  \---+                                              
+        |                /---+      \--- Plestiodon japonicus (15)
+        |                |   |                                                     
+        |   /------------+   \--------------------------------------------- Xantusia vigilis (16)
+        |   |            |                                                         
+        |   |            \-------- Tiliqua rugosa (17)
+        \---+                                                                      
+            | /------- Panaspis breviceps (19)
+            | |                                                                    
+            \-+   /- Panaspis togoensis (20)
+              \---+                                                                
+                  \-- Panaspis togoensis (21)

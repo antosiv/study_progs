@@ -1,0 +1,63 @@
+
++-------------------------------------------------------------------------------------------------Xantusia vigilis
+ |
+ |                                                         +---------------------------------------------------------Broadleysaurus major
+ |                                                         |
+ |                                                         |     +-------Tiliqua rugosa
+ |                                                         |-----+
+ |                                                         |     +----------------------------Plestiodon inexpectatus
+ |                                                         |
+ |                                                         |                          +-------Panaspis breviceps
+ |                                                         |                          |
+ |                                                         |                      +---+
+ |                                                         |                      |   |  +Panaspis togoensis
+ +---------------------------------------------------------+                      |   +--+
+                                                           |                      |      +Panaspis togoensis
+                                                           |                      |
+                                                           |                      |           +----Panaspis sp. Ethiopia
+                                                           |                      |           |
+                                                           |                      |           |        +Panaspis sp. Mozambique 1
+                                                           |                      |           |      +-+
+                                                           |                      |        +--+      | +Panaspis sp. Mozambique 1
+                                                           +----------------------+        |  |  +---+
+                                                                                  |        |  |  |   |  +-Panaspis maculicollis
+                                                                                  |        |  |  |   +--+
+                                                                                  |        |  +--+      +-Panaspis maculicollis
+                                                                                  |        |     |
+                                                                                  |        |     |  +--Panaspis sp. Namibia
+                                                                                  |        |     +--+
+                                                                                  |        |        +-Panaspis sp. Limpopo
+                                                                                  |        |
+                                                                                  |        | +-----Panaspis sp. Mozambique 2
+                                                                                  +--------+ |
+                                                                                           |++
+                                                                                           |||      +Panaspis cabindae
+                                                                                           ||+------+
+                                                                                           ||       +Panaspis cabindae
+                                                                                           ||
+                                                                                           ||   +-Panaspis sp. Tanzania 2
+                                                                                           || +-+
+                                                                                           || | +Panaspis sp. Tanzania 1
+                                                                                           || |
+                                                                                           ++ | +--Panaspis sp. Mozambique 5
+                                                                                            | |++
+                                                                                            | ||+-----Panaspis sp. Katanga 1
+                                                                                            | |+
+                                                                                            | |+---Panaspis sp. Katanga 2
+                                                                                            | |
+                                                                                            | |  +Panaspis sp. Malawi
+                                                                                            | |  |
+                                                                                            | |--+------Panaspis sp. Mozambique 4
+                                                                                            +-+  |
+                                                                                              |  +--Panaspis sp. Mozambique 3
+                                                                                              |
+                                                                                              |
+                                                                                              | +Panaspis wahlbergi
+                                                                                              |++
+                                                                                              ||+--Panaspis wahlbergi
+                                                                                              ||
+                                                                                              ||-----Panaspis wahlbergi
+                                                                                              ++
+                                                                                               |-Panaspis wahlbergi
+                                                                                               |
+                                                                                               +Panaspis wahlbergi
