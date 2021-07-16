@@ -9,3 +9,4 @@ __pycache__
 *.snm
 *.toc
 *.dvi
+node_modules
