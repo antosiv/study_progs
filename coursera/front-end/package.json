@@ -20,5 +20,8 @@
   "homepage": "https://github.com/antosiv/study_progs#readme",
   "devDependencies": {
     "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0"
   }
 }
